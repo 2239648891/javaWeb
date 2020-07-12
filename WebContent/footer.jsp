@@ -47,7 +47,7 @@
           <div class="clearfix"></div>
         </div>
       </div>
-      <p class="footer-class">Copyright &copy; 2015.Company name All rights reserved.</p>
+      <p class="footer-class">Copyright &copy; 2015.Company name All rights reserved</p>
       <script type="text/javascript">
             $(document).ready(function() {
               /*
