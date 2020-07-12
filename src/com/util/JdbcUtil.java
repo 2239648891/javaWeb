@@ -27,7 +27,7 @@ public class JdbcUtil {
 	private static final String CLASSNAME="com.mysql.jdbc.Driver";
 	//jdbc:mysql://127.0.0.1:3306/test
 	//private static final String URL="jdbc:oracle:thin:@127.0.0.1:1521:orcl";
-	private static final String URL="jdbc:mysql://127.0.0.1:3306/test";
+	private static final String URL="jdbc:mysql://127.0.0.1:3306/web";
 	private static final String USERNAME="root";
 	private static final String PASSWORD="root";
 	
