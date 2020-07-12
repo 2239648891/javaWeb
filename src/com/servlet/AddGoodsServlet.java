@@ -49,7 +49,7 @@ public class AddGoodsServlet extends HttpServlet {
 		//生成新的文件名
 		String filename = UUID.randomUUID() + tail;
 		//上传图片的路径
-		String url = "D:\\eclipse\\servlet_web\\WebContent\\images\\"+filename;
+		String url = "D:\\java\\servlet_web\\WebContent\\images\\"+filename;
 		part.write(url);
 		String sql="insert into goods (gname,number,price,type,picture,presentation) values(?,?,?,?,?,?)";
 		JdbcUtil jdbc = new JdbcUtil();

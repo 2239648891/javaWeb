@@ -81,7 +81,7 @@
 												
 						<input type="hidden" name="action" value="addgoods">
 							
-						<input type="submit" value="注册"> 
+						<input type="submit" value="添加"> 
 					</form>
 				
 		</div>
