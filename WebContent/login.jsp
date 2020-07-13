@@ -66,7 +66,8 @@
 						<span class="word">密&nbsp;&nbsp;码*</span>
 						<input type="password" id="password" name="password" required
 								placeholder="字母或数字长度6-11位" pattern="[A-z0-9]{6,11}">
-					</div>				
+					</div>	
+						<input type="hidden" name="action" value="login">			
 						<input type="submit" value="登录"> 
 				</form>
 		</div>

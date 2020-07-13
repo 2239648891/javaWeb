@@ -22,7 +22,7 @@ public class UserServlet extends HttpServlet {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		String username = request.getParameter("username");
@@ -37,10 +37,28 @@ public class UserServlet extends HttpServlet {
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}
+	protected void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		String phone=request.getParameter("phone" );
+		String username= request.getParameter("username");
+		String password= request.getParameter("password");
+		String sex= request.getParameter("sex");
+		String idcard= request.getParameter("idcard");
+		JdbcUtil jdbc = new JdbcUtil();
+		String sql="insert into user (username, password, phone,sex,idcard) values(?, ?, ?,?,?)";
+		try {
+			jdbc.updatePreparedStatement(sql, username, password,phone,sex, idcard);
+			//测试是否能写入到数据库
+			//System.out.println("用户注册成功");
+			response.sendRedirect("login.jsp");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
+	
 
 }

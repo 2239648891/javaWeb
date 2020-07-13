@@ -50,7 +50,7 @@
 	<%@ include file="header.jsp" %>
 	<div class="container">
 		<div class="account">
-			<h2 class="account-in">账户</h2>
+			<h2 class="account-in">添加商品</h2>
 				<form role="form" enctype="multipart/form-data" method="post" action="GoodsServlet">
 					<div class="form-group">
 							 <label for="gname">商品名</label><input type="text" required class="form-control" id="gname" name="gname" />
