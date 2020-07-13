@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.util.JdbcUtil;
+
 @WebServlet("/UserServlet")
 public class UserServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,6 +25,27 @@ public class UserServlet extends BaseServlet {
 		String password = request.getParameter("password");
 		System.out.println(username);
 		System.out.println(password);
+	}
+	
+	protected void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		String phone=request.getParameter("phone" );
+		String username= request.getParameter("username");
+		String password= request.getParameter("password");
+		String sex= request.getParameter("sex");
+		String idcard= request.getParameter("idcard");
+		JdbcUtil jdbc = new JdbcUtil();
+		String sql="insert into user (username, password, phone,sex,idcard) values(?, ?, ?,?,?)";
+		try {
+			jdbc.updatePreparedStatement(sql, username, password,phone,sex, idcard);
+			//测试是否能写入到数据库
+			//System.out.println("用户注册成功");
+			response.sendRedirect("login.jsp");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	
