@@ -51,7 +51,7 @@
 	<div class="container">
 		<div class="account">
 			<h2 class="account-in">账户</h2>
-				<form role="form" enctype="multipart/form-data" method="post" action="AddGoodsServlet">
+				<form role="form" enctype="multipart/form-data" method="post" action="GoodsServlet">
 					<div class="form-group">
 							 <label for="gname">商品名</label><input type="text" required class="form-control" id="gname" name="gname" />
 						</div>
@@ -79,7 +79,7 @@
 							 <label for="presentation">商品描述</label><input type="text" required class="form-control" id="presentation" name="presentation" />
 						</div>
 												
-						<input type="hidden" name="action" value="addgoods">
+						<input type="hidden" name="action" value="addGoods">
 							
 						<input type="submit" value="添加"> 
 					</form>

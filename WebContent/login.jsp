@@ -49,19 +49,19 @@
 	<%@ include file="header.jsp" %>
 	<div class="container">
 		<div class="account">
-			<h2 class="account-in">账户</h2>
-				<form>
-				 	
-				<div> 	
-					<span class="text">账号/手机号*</span>
-					<input type="text"> 
-				</div>			
-				
-				<div> 
-					<span class="word">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码*</span>
-					<input type="password">
-				</div>				
-					<input type="submit" value="登录"> 
+			<h2 class="account-in">请登录</h2>
+				<form action="UserServlet" method="post" >
+					<div> 	
+						<span class="text">用户名*</span>
+						<input type="text" name="username" required autocomplete="off"> 
+					</div>			
+					
+					<div> 
+						<span class="word">密&nbsp;&nbsp;码*</span>
+						<input type="password" name="password" required>
+					</div>	
+						<input type="hidden" name="action" value="login">			
+						<input type="submit" value="登录"> 
 				</form>
 		</div>
 	</div>
