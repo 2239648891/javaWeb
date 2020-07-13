@@ -49,18 +49,24 @@
 	<%@ include file="header.jsp" %>
 	<div class="container">
 		<div class="account">
-			<h2 class="account-in">请登录</h2>
-				<form action="UserServlet" method="post" >
+			<%
+				String mess = (String)request.getAttribute("mess");
+			%>
+			<h2 class="account-in">
+				请登录&nbsp; &nbsp; &nbsp;<font style="color:red"><%=mess==null?"":mess %></font>
+			</h2>
+				<form action="UserServlet" method="post">
 					<div> 	
 						<span class="text">用户名*</span>
-						<input type="text" name="username" required autocomplete="off"> 
+						<input type="text" id="username" name="username" required autocomplete="off"
+								placeholder="字母或数字长度6-11位" pattern="[A-z0-9]{6,11}"> 
 					</div>			
 					
 					<div> 
 						<span class="word">密&nbsp;&nbsp;码*</span>
-						<input type="password" name="password" required>
-					</div>	
-						<input type="hidden" name="action" value="login">			
+						<input type="password" id="password" name="password" required
+								placeholder="字母或数字长度6-11位" pattern="[A-z0-9]{6,11}">
+					</div>				
 						<input type="submit" value="登录"> 
 				</form>
 		</div>
