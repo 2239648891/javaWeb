@@ -15,7 +15,7 @@ import com.model.User;
 import com.util.JdbcUtil;
 
 @WebServlet("/UserServlet")
-public class UserServlet extends HttpServlet {
+public class UserServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
     
     public UserServlet() {
