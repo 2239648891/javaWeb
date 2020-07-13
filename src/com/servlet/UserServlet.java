@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import com.model.User;
+
 import com.util.JdbcUtil;
 
 @WebServlet("/UserServlet")
@@ -35,6 +37,7 @@ public class UserServlet extends HttpServlet {
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

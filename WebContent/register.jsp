@@ -51,7 +51,7 @@
 	<div class="container">
 		<div class="account">
 			<h2 class="account-in">账户</h2>
-				<form>
+				<form  role="form" method="post" action="RegisterServlet">
 					<div class="form-group">
 						 <label for="sid">手机号*</label><input type="text" class="form-control" id="sid" name="sid" />
 					</div>
@@ -74,7 +74,7 @@
 					<div class="form-group">
 						 <label for="major">身份证号*</label><input type="text" class="form-control" id="major" name="major" />
 					</div>
-					<input type="hidden" name="action" value="add">
+					<input type="hidden" name="action" value="register">	
 							
 					<input type="submit" value="注册"> 
 				</form>
