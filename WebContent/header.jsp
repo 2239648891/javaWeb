@@ -8,7 +8,7 @@
 			<div class="container">	
 				<div class="header-top-in">			
 					<div class="logo">
-						<a href="index.html"><img src="images/logo.png" alt=" " ></a>
+						<a href="index.jsp"><img src="images/logo.png" alt=" " ></a>
 					</div>
 					<div class="header-in">
 						<ul class="icon1 sub-icon1">
@@ -22,7 +22,7 @@
 				                    <li><a href="UserServlet?action=exit">退出</a></li>
 			                    </ul>
 			           	 	</li>
-							
+							<li><c:if test="${sessionScope.user!=null}"><a href="addgoods.jsp">上架商品</a></c:if></li>
 							<li><a href="#" > </a></li>
 							<li><div class="cart">
 									<a href="#" class="cart-in"> </a>
@@ -76,21 +76,12 @@
 					<li class="active"><a href="index.jsp"><i> </i>首页</a></li>
 					
 					<li><a href="GoodsServlet?action=query" >  所有产品</a></li>
-					<li ><a href="#" >笔记本电脑</a>
-						<ul class="drop">
-							<li><a href="products.html">索尼(2)</a></li>
-							<li><a href="products.html">安卓(4)</a></li>
-							<li><a href="products.html">苹果(7)</a></li>
-							<li><a href="products.html">宏基(53)</a></li>
-							<li><a href="products.html">惠普(78)</a></li>
-							<li><a href="products.html">因特尔(5)</a></li>
-						</ul>
-					</li> 						
-					<li><a href="products.html" >  平板电脑</a></li>            
-					<li><a href="products.html" >商品种类</a></li>						  				 
-					<li><a href="products.html" >商品种类</a></li>
-					<li><a href="products.html" >商品种类</a></li>
-					<li><a href="products.html" >  照相机 </a></li>
+					<li ><a href="GoodsServlet?action=query" >数码产品</a></li> 						
+					<li><a href="GoodsServlet?action=query" >  办公产品</a></li>            
+					<li><a href="GoodsServlet?action=query" >生活用品</a></li>						  				 
+					<li><a href="GoodsServlet?action=query" >图书</a></li>
+					<li><a href="#" >其他</a></li>
+					<li><a href="#" >  其他 </a></li>
 					<li><a href="contact.html" >联系我们 </a></li>
 					
 				</ul>
@@ -102,6 +93,7 @@
 			<div class="container">
 			<div class="header-bottom-on">
 			<p class="wel"><a href="register.jsp">注册</a></p>
+			
 			<div class="header-can">
 				<ul class="social-in">
 						<li><a href="#"><i> </i></a></li>
@@ -117,7 +109,7 @@
 							<input type="submit" value="">
 						</form>
 					</div>
-
+					
 					<div class="clearfix"> </div>
 			</div>
 			<div class="clearfix"></div>
