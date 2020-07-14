@@ -31,6 +31,22 @@ public class GoodsServlet extends BaseServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    protected void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String gname = request.getParameter("gname");
+		JdbcUtil jdbc =new JdbcUtil();
+		String sql="delete from goods where gname =?";
+		try {
+			jdbc.updatePreparedStatement(sql, gname);
+			//查询数据库中的商品列表
+			//response.sendRedirect(arg0);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			request.setAttribute("mess", "删除失败，请稍后在试");
+			//跳转到错误页面
+			request.getRequestDispatcher("error.jsp").forward(request, response);
+		}
+	}
     protected void query(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
@@ -38,9 +54,6 @@ public class GoodsServlet extends BaseServlet {
 		Integer cp = Integer.parseInt(request.getParameter("cp")==null || request.getParameter("cp").equals("") ?"1":request.getParameter("cp"));
 		String gname = request.getParameter("gname");
 		JdbcUtil jdbc = new JdbcUtil();
-		
-		StringBuffer sb = new StringBuffer();
-		sb.append("select gname, number, price, type, picture, state, presentation, id from goods order by id LIMIT "+(cp-1)*pagesize+","+(cp*pagesize));
 		StringBuffer sql = new StringBuffer();
 		sql.append("select * from goods where 1=1 ");
 		if(gname!=null && !gname.equals("")){
@@ -53,6 +66,13 @@ public class GoodsServlet extends BaseServlet {
 		if(cp>total || cp<=0){
 			cp=1;
 		}
+		StringBuffer sb = new StringBuffer();
+		sb.append("select gname, number, price, type, picture, state, presentation, id from ( ");
+		sb.append(sql);
+		sb.append(" ) t order by id LIMIT "+(cp-1)*pagesize+","+(cp*pagesize));
+		
+		
+		
 		
 		List<Goods> goods = jdbc.queryPreparedStatement(sb.toString(), Goods.class);
 		

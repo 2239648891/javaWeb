@@ -51,15 +51,15 @@
 	<div class="container">
 		<div class="account">
 			<h2 class="account-in">账户</h2>
-				<form  role="form" method="post" action="RegisterServlet">
+				<form  role="form" method="post" action="UserServlet">
 					<div class="form-group">
-						 <label for="sid">手机号*</label><input type="text" class="form-control" id="sid" name="sid" />
+						 <label for="sid">手机号*</label><input type="text" class="form-control" id="phone" name="phone" />
 					</div>
 					<div class="form-group">
-						 <label for="sname">用户名*</label><input type="tel" class="form-control" id="sname" name="sname" />
+						 <label for="sname">用户名*</label><input type="tel" class="form-control" id="username" name="username" />
 					</div>
 					<div class="form-group">
-						 <label for="age">密码*</label><input type="password" class="form-control" id="age" name="age"/>
+						 <label for="age">密码*</label><input type="password" class="form-control" id="password" name="password"/>
 					</div>
 					<div class="form-group">
 						 <label for="sex">性别*</label>
@@ -72,7 +72,7 @@
 					
 					
 					<div class="form-group">
-						 <label for="major">身份证号*</label><input type="text" class="form-control" id="major" name="major" />
+						 <label for="major">身份证号*</label><input type="text" class="form-control" id="idcard" name="idcard" />
 					</div>
 					<input type="hidden" name="action" value="register">	
 							

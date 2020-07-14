@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.model.User" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,22 +51,35 @@
 	<div class="container">
 		<div class="account">
 			<%
-				String mess = (String)request.getAttribute("mess");
+				User user = (User)session.getAttribute("user");
 			%>
 			<h2 class="account-in">
-				修改密码&nbsp; &nbsp; &nbsp;<font style="color:red"><%=mess==null?"":mess %></font>
+				个人信息&nbsp; &nbsp; &nbsp;
 			</h2>
 				<form action="UserServlet" method="post" >
 					<div> 	
-						<span class="text">旧密码*</span>
-						<input type="text" name="oldPass" required autocomplete="off"> 
+						<span class="text">手机号</span>
+						<input type="text" name="phone" readonly="readonly" autocomplete="off" value="<%=user.getPhone() %>"> 
+					</div>
+					
+					<div> 	
+						<span class="text">用户名*</span>
+						<input type="text" name="username" required autocomplete="off" value="<%=user.getUsername() %>"> 
 					</div>			
 					
 					<div> 
-						<span class="word">新密码*</span>
-						<input type="password" name="newPass" required>
+						<span class="text">性别*</span>
+						<select id="sex" name="sex" >
+								<option <% if(user.getSex().equals("男")){%> selected <% } %>>男</option>
+								<option <% if(user.getSex().equals("女")){%> selected <% } %>>女</option>
+						</select>
 					</div>	
-						<input type="hidden" name="action" value="editPassword">			
+					
+					<div> 
+						<span class="word">身份证*</span>
+						<input type="password" name="idcard" required value="<%=user.getIdcard() %>">
+					</div>	
+						<input type="hidden" name="action" value="editInformation" >			
 						<input type="submit" value="确认"> 
 				</form>
 		</div>

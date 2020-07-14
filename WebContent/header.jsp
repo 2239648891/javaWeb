@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!--header-->
 	<div class="header">
@@ -11,10 +12,18 @@
 					</div>
 					<div class="header-in">
 						<ul class="icon1 sub-icon1">
-							<li ><c:if test="${sessionScope.user!=null}">欢迎：${sessionScope.user.username}</c:if>
-							<c:if test="${sessionScope.user==null}"><a href="login.jsp">登录</a></c:if></li>
+						
+							<li><c:if test="${sessionScope.user==null}"><a href="login.jsp">登录</a></c:if></li>
 							<li ><a href="#" > 购物车</a></li>
-							<li > <a href="checkout.html" >退出</a> </li>	
+			                <li ><a href="#"><c:if test="${sessionScope.user!=null}">欢迎： ${sessionScope.user.username}</c:if></a>
+			                	<ul class="drop_down2_content2">
+				                	<li><a href="UserServlet?action=searchInformation">个人信息</a></li>
+				                    <li><a href="UserServlet?action=toEditPassword">密码修改</a></li>
+				                    <li><a href="UserServlet?action=exit">退出</a></li>
+			                    </ul>
+			           	 	</li>
+							
+							<li><a href="#" > </a></li>
 							<li><div class="cart">
 									<a href="#" class="cart-in"> </a>
 									<span> 0</span>
@@ -101,8 +110,10 @@
 						<li><a href="#"><i class="skype"> </i></a></li>
 					</ul>						
 					<div class="search">
-						<form>
-							<input type="text" value="查找商品 " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" >
+						<form action="GoodsServlet" method="post">
+							
+							<input type="text" name="gname" value="查找商品 " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" >
+							<input type="hidden" name="action" value="query">
 							<input type="submit" value="">
 						</form>
 					</div>

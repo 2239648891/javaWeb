@@ -33,8 +33,8 @@ public class BaseServlet extends HttpServlet {
 			response.setCharacterEncoding("utf-8");
 			String action = request.getParameter("action");
 			
-			//防盗链
-			/*User user = (User)request.getSession().getAttribute("user");
+			/*//防盗链
+			User user = (User)request.getSession().getAttribute("username");
 			if(user==null && !action.equals("login")){
 				response.sendRedirect("index.jsp");
 				return ;
