@@ -57,9 +57,9 @@
 			</h2>
 				<form action="UserServlet" method="post">
 					<div> 	
-						<span class="text">用户名*</span>
-						<input type="text" id="username" name="username" required autocomplete="off"
-								placeholder="字母或数字长度6-11位" pattern="[A-z0-9]{6,11}"> 
+						<span class="text">手机号*</span>
+						<input type="text" id="phone" name="phone" required autocomplete="off"
+								placeholder="数字长度11位" pattern="[0-9]{11}"> 
 					</div>			
 					
 					<div> 

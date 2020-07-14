@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!--header-->
 	<div class="header">
 		<div class="header-top">
@@ -10,7 +11,8 @@
 					</div>
 					<div class="header-in">
 						<ul class="icon1 sub-icon1">
-							<li  ><a href="login.jsp">登录</a></li>
+							<li ><c:if test="${sessionScope.user!=null}">欢迎：${sessionScope.user.username}</c:if>
+							<c:if test="${sessionScope.user==null}"><a href="login.jsp">登录</a></c:if></li>
 							<li ><a href="#" > 购物车</a></li>
 							<li > <a href="checkout.html" >退出</a> </li>	
 							<li><div class="cart">
@@ -62,7 +64,7 @@
 			<div class="h_menu4">
 				<a class="toggleMenu" href="#">菜单</a>
 				<ul class="nav">
-					<li class="active"><a href="index.html"><i> </i>首页</a></li>
+					<li class="active"><a href="index.jsp"><i> </i>首页</a></li>
 					
 					<li><a href="Products.jsp" >  所有产品</a></li>
 					<li ><a href="#" >笔记本电脑</a>

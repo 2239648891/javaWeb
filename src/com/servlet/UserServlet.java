@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import com.model.User;
 
@@ -25,17 +25,24 @@ public class UserServlet extends BaseServlet {
 	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		String username = request.getParameter("username");
+		String phone = request.getParameter("phone");
 		String password = request.getParameter("password");
 		JdbcUtil jdbc = new JdbcUtil();
-		String sql = "select * from user where username=? and password=? ";
-		List<User> users = jdbc.queryPreparedStatement(sql, User.class, username,password);
+		String sql = "select * from user where phone=? and password=? ";
+		List<User> users = jdbc.queryPreparedStatement(sql, User.class, phone,password);
 		if(users.size()>0){
+			HttpSession session = request.getSession();
+			session.setAttribute("user", users.get(0));
 			request.getRequestDispatcher("good.jsp").forward(request, response);
 		}else{
-			request.setAttribute("mess", "用户名或密码不正确");
+			request.setAttribute("mess", "账号或密码不正确");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
+	}
+	protected void exit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		
 	}
 	protected void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
