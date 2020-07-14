@@ -33,7 +33,7 @@ public class UserServlet extends BaseServlet {
 		if(users.size()>0){
 			HttpSession session = request.getSession();
 			session.setAttribute("user", users.get(0));
-			request.getRequestDispatcher("good.jsp").forward(request, response);
+			request.getRequestDispatcher("GoodsServlet?action=query").forward(request, response);
 		}else{
 			request.setAttribute("mess", "账号或密码不正确");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -44,6 +44,7 @@ public class UserServlet extends BaseServlet {
 		response.setCharacterEncoding("utf-8");
 		
 	}
+	
 	protected void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");

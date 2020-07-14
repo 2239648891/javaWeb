@@ -1,6 +1,7 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.model.Goods;
 import com.util.JdbcUtil;
+import com.util.PageUtil;
 
 /**
  * Servlet implementation class GoodsServlet
@@ -28,7 +31,39 @@ public class GoodsServlet extends BaseServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    protected void query(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		Integer pagesize=8;
+		Integer cp = Integer.parseInt(request.getParameter("cp")==null || request.getParameter("cp").equals("") ?"1":request.getParameter("cp"));
+		String gname = request.getParameter("gname");
+		JdbcUtil jdbc = new JdbcUtil();
+		
+		StringBuffer sb = new StringBuffer();
+		sb.append("select gname, number, price, type, picture, state, presentation, id from goods order by id LIMIT "+(cp-1)*pagesize+","+(cp*pagesize));
+		StringBuffer sql = new StringBuffer();
+		sql.append("select * from goods where 1=1 ");
+		if(gname!=null && !gname.equals("")){
+			sql.append(" and gname like '%"+gname+"%'");
+		}
+		sql.append(" order by id asc");
+		List<Goods> temp = jdbc.queryPreparedStatement(sql.toString(), Goods.class);
+		long total = temp.size() % pagesize ==0 ? temp.size()/pagesize : temp.size() /pagesize + 1;
+		total = total==0 ? 1 : total;
+		if(cp>total || cp<=0){
+			cp=1;
+		}
+		
+		List<Goods> goods = jdbc.queryPreparedStatement(sb.toString(), Goods.class);
+		
+		request.setAttribute("goods", goods);
+		String pageTool = PageUtil.getPageTool(request, temp.size(), cp, pagesize);
+		request.setAttribute("pageutil", pageTool);
+		jdbc.close();
+		
+		request.getRequestDispatcher("good.jsp").forward(request, response);
+		
+	}
 	
 	protected void addGoods(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");

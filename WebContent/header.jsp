@@ -66,7 +66,7 @@
 				<ul class="nav">
 					<li class="active"><a href="index.jsp"><i> </i>首页</a></li>
 					
-					<li><a href="Products.jsp" >  所有产品</a></li>
+					<li><a href="GoodsServlet?action=query" >  所有产品</a></li>
 					<li ><a href="#" >笔记本电脑</a>
 						<ul class="drop">
 							<li><a href="products.html">索尼(2)</a></li>
